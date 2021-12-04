@@ -20,3 +20,5 @@ do
     wget $s -O $i.jpg
     i=$((i+1))
 done
+
+rm $PAGE

@@ -8,4 +8,4 @@ OUTP=$2
 
 [[ ! -f $INP ]] && echo "ERROR: file $INP not found" && exit 1
 
-awk '/Belen.Search.ViewAdView.init\({/,/}\);/' $INP | sed -e "s/Belen.Search.ViewAdView.init(//" -e "s/});/}/" | grep -v "adImageUrl" | sed 's/\(\w+\):/"\1"/' | jq . > $OUTP
+awk '/Belen.Search.ViewAdView.init\({/,/}\);/' $INP | sed -e "s/Belen.Search.ViewAdView.init(//" -e "s/});/}/" | grep -v "adImageUrl" | sed 's/\(\w\+\):/"\1":/' | tr "'" '"' | jq . > $OUTP

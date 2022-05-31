@@ -13,14 +13,6 @@ PAGE=$FOLDER/get_photos_page_${datum}_${RANDOM}
 
 ./fetch_page.sh "$LINK" "$PAGE"
 
-links=$( grep "\$_59" $PAGE | grep "img src" | grep -o "https.*JPG" )
-
-i=1
-
-for s in $links
-do
-    wget $s -O $FOLDER/$i.jpg
-    i=$((i+1))
-done
+./fetch_photos.sh "$PAGE" "$FOLDER"
 
 rm $PAGE

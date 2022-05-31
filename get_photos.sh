@@ -8,12 +8,10 @@ FOLDER=$2
 
 [[ ! -d $FOLDER ]] && mkdir $FOLDER
 
-AGENT="user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.182 Safari/537.36"
-
 datum=$( date -u +"%Y%m%d_%H%M%S" )
 PAGE=$FOLDER/get_photos_page_${datum}_${RANDOM}
 
-curl -H "$AGENT" "$LINK" > $PAGE
+./get_page.sh "$LINK" "$PAGE"
 
 links=$( grep "\$_59" $PAGE | grep "img src" | grep -o "https.*JPG" )
 

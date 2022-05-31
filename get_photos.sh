@@ -11,7 +11,7 @@ FOLDER=$2
 datum=$( date -u +"%Y%m%d_%H%M%S" )
 PAGE=$FOLDER/get_photos_page_${datum}_${RANDOM}
 
-./get_page.sh "$LINK" "$PAGE"
+./fetch_page.sh "$LINK" "$PAGE"
 
 links=$( grep "\$_59" $PAGE | grep "img src" | grep -o "https.*JPG" )
 
